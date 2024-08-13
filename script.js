@@ -62,9 +62,9 @@ console.log('Computer wins!');
 
 function playGame(){ //Play 5 rounds to determine the winner
 
-    for(let i =0 ; i < 5 ; i++){
+   
         
-       console.log(`--------Round:${i+1}---------`); 
+       
        let compSelection = getComputerChoice();
        let humanSelection = getHumanChoice();
 
@@ -75,7 +75,7 @@ function playGame(){ //Play 5 rounds to determine the winner
 
        console.log(`\n`); 
 
-    }
+    
 
     if(humanScore > compScore){
         console.log(`Human wins the 5 rounds`);
