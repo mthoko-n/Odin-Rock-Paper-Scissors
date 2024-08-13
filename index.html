@@ -5,25 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+   <!--<script src="script.js" defer></script>-->
 </head>
 <body>
     <h1>Rock-Paper-Scissors Game</h1>
     
-    <div class="button-container">
-        <button class="game-button rock">Rock</button>
-        <button class="game-button paper">Paper</button>
-        <button class="game-button scissors">Scissors</button>
-    </div>
+    <!-- Main content container -->
+    <div class="main-container">
+        <!-- Game setup container -->
+        <div class="game-setup">
+            <div class="button-container">
+                <button class="game-button rock">Rock</button>
+                <button class="game-button paper">Paper</button>
+                <button class="game-button scissors">Scissors</button>
+            </div>
 
-    <div class="panel">
-        Computer selected: <span class="computer-selection">None</span>
+            <div class="panel">
+                Computer selected: <span class="computer-selection">None</span>
+            </div>
+        </div>
+
+        <!-- Scoreboard container -->
+        <div class="scoreboard">
+            <h2>Round Results</h2>
+            <ul class="round-results">
+                <li class="round">Round 1: <span class="result round-1">TBD</span></li>
+                <li class="round">Round 2: <span class="result round-2">TBD</span></li>
+                <li class="round">Round 3: <span class="result round-3">TBD</span></li>
+                <li class="round">Round 4: <span class="result round-4">TBD</span></li>
+                <li class="round">Round 5: <span class="result round-5">TBD</span></li>
+            </ul>
+        </div>
     </div>
 
     <div class="creator">
-        <p>Created by: Mthokozisi Nxumalo(Mr CEO)</p>
+        <p>Created by: Mthokozisi Nxumalo (Mr CEO)</p>
     </div>
-    
-    
 </body>
 </html>
