@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
     <link rel="stylesheet" href="style.css">
-   <!--<script src="script.js" defer></script>-->
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Rock-Paper-Scissors Game</h1>
@@ -29,15 +29,29 @@
         <div class="scoreboard">
             <h2>Round Results</h2>
             <ul class="round-results">
-                <li class="round">Round 1: <span class="result round-1">TBD</span></li>
-                <li class="round">Round 2: <span class="result round-2">TBD</span></li>
-                <li class="round">Round 3: <span class="result round-3">TBD</span></li>
-                <li class="round">Round 4: <span class="result round-4">TBD</span></li>
-                <li class="round">Round 5: <span class="result round-5">TBD</span></li>
+                <li class="round">Round 1: <span class="result round-1"></span></li>
+                <li class="round">Round 2: <span class="result round-2"></span></li>
+                <li class="round">Round 3: <span class="result round-3"></span></li>
+                <li class="round">Round 4: <span class="result round-4"></span></li>
+                <li class="round">Round 5: <span class="result round-5"></span></li>
+                <li class="round">Winner: <span class="result winner"></span></li>
             </ul>
         </div>
     </div>
 
+    <!--Modal-->
+
+    <div class="modal hidden">
+        <div class="modal-content">
+            <h2 class="modal-title">Round Winner</h2>
+            <p class="modal-message">TBD</p>
+            <button class="next-round-button">Play Next Round</button>
+            <button class="new-game-button hidden">Play New Game</button>
+        </div>
+    </div>
+    <div class="modal-overlay hidden"></div>
+
+    <!--Creator tage-->
     <div class="creator">
         <p>Created by: Mthokozisi Nxumalo (Mr CEO)</p>
     </div>

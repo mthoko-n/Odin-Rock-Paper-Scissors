@@ -1,97 +1,143 @@
-
 let humanScore = 0;
 let compScore = 0;
+let currentRound = 1;
+const maxRounds = 5;
+
+const roundResults = document.querySelectorAll('.round-results .result');
+const modal = document.querySelector('.modal');
+const modalOverlay = document.querySelector('.modal-overlay');
+const modalTitle = document.querySelector('.modal-title');
+const modalMessage = document.querySelector('.modal-message');
+const nextRoundButton = document.querySelector('.next-round-button');
+const newGameButton = document.querySelector('.new-game-button');
 
 function getComputerChoice(){
-    let choice = undefined;
-    let randNum = Math.floor(Math.random()*3);
-    if(randNum === 0){
-        choice = "Rock";
-    }
-
-    else if(randNum=== 1){
-        choice = "Paper";
-    }
-
-    else{
-        choice = "Scissor"
-    }
-
-    return choice.toLowerCase();
-}
-function getHumanChoice(){
-    let choice = prompt("Enter Rock , Paper or Scissor");
-    let final = choice.toLowerCase();
-
-    return final;
-}
-
-function playRound(humanChoice, computerChoice) {
     const choices = ['rock', 'paper', 'scissors'];
-   
-    if (!choices.includes(humanChoice)) {
-        console.log('Invalid choice. Please choose from: rock, paper, or scissors.');
+    return choices[Math.floor(Math.random() * choices.length)];
+}
+
+function playRound(humanChoice, computerChoice){ 
+    let roundWinner;
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
+
+    const choices = ['rock', 'paper', 'scissors'];
+
+    if(!choices.includes(humanChoice)) {
+        alert('Invalid choice. Please choose from: rock, paper, or scissors.');
         return;
     }
 
 
-// Determine the winner
-if (humanChoice === computerChoice) {
-console.log("It's a tie!");
-} 
+    if (humanChoice === computerChoice){
+        roundWinner = 'Draw!';
+    } else if(
+        (humanChoice === 'rock' && computerChoice === 'scissors') ||
+        (humanChoice === 'paper' && computerChoice === 'rock') ||
+        (humanChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+        humanScore += 1;
+        roundWinner = 'You win!';
+    } else {
+        compScore += 1;
+        roundWinner = 'Computer wins!';
+    }
 
-else if (
-(humanChoice === 'rock' && computerChoice === 'scissors') ||
-(humanChoice === 'paper' && computerChoice === 'rock') ||
-(humanChoice === 'scissors' && computerChoice === 'paper')
-) 
-{
-humanScore += 1;
-console.log('You win!');
+    return roundWinner;
 }
 
-else if (computerChoice === 'rock' && humanChoice === 'scissors' ||
-    computerChoice === 'paper' && humanChoice === 'rock' ||
-    computerChoice === 'scissors' && humanChoice === 'paper') {
-compScore += 1;
-console.log('Computer wins!');
-}
+
+
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+const compSelect = document.querySelector(".computer-selection");
+const roundResult = document.querySelector(".round-result");
+
+rockBtn.addEventListener("click", function(e) {
+    const humanChoice = e.target.textContent;
+    const compChoice = getComputerChoice();
+    compSelect.textContent = compChoice;
+    const result = playRound(humanChoice, compChoice);
+    updateRoundResult(result);
+    showModal(result);
+
+});
+
+paperBtn.addEventListener("click", function(e) {
+    const humanChoice = e.target.textContent;
+    const compChoice = getComputerChoice();
+    compSelect.textContent = compChoice;
+    const result = playRound(humanChoice, compChoice);
+    updateRoundResult(result);
+    showModal(result);
+})
+
+scissorsBtn.addEventListener("click", function(e) {
+    const humanChoice = e.target.textContent;
+    const compChoice = getComputerChoice();
+    compSelect.textContent = compChoice;
+    const result = playRound(humanChoice, compChoice);
+    updateRoundResult(result);
+    showModal(result);
     
+})
 
+function updateRoundResult(winner) {
+    if (currentRound <= maxRounds) {
+        roundResults[currentRound - 1].textContent = winner;
+    }
 }
 
-function playGame(){ //Play 5 rounds to determine the winner
+function updateFinalWinner(){
+    let finalWinner;
+    if (humanScore > compScore) {
+        finalWinner = "You win the game!";
+    } else if (compScore > humanScore) {
+        finalWinner = "Computer wins the game!";
+    } else {
+        finalWinner = "It's a draw!";
+    }
+    roundResults[maxRounds].textContent = finalWinner;
+    return finalWinner;
+}
 
+function showModal(winner){
    
-        
-       
-       let compSelection = getComputerChoice();
-       let humanSelection = getHumanChoice();
-
-       console.log(`The Computer selection is ${compSelection}`);
-       console.log(`The Human selection is ${humanSelection}`);
-
-       playRound(humanSelection,compSelection);
-
-       console.log(`\n`); 
-
-    
-
-    if(humanScore > compScore){
-        console.log(`Human wins the 5 rounds`);
+    if (currentRound >= maxRounds) {
+        const finalW =updateFinalWinner();
+        modalTitle.textContent = 'Final Winner';
+        modalMessage.textContent = `Winner: ${finalW}`;
+        nextRoundButton.classList.add('hidden');
+        newGameButton.classList.remove('hidden');
+    } else {
+        modalTitle.textContent = `Round ${currentRound} Winner`;
+        modalMessage.textContent = `Winner: ${winner}`;
+        nextRoundButton.classList.remove('hidden');
+        newGameButton.classList.add('hidden');
     }
-
-    else if (compScore > humanScore){ 
-        console.log(`Computer wins the 5 rounds`);
-    }
-
-    else{
-        console.log(`Human and Computer tie after 5 rounds`); 
-    }
+    modal.classList.remove('hidden');
+    modalOverlay.classList.remove('hidden');
 }
 
-playGame();
+function hideModal(){
+    modal.classList.add('hidden');
+    modalOverlay.classList.add('hidden');
+}
 
+nextRoundButton.addEventListener('click', function(){
+    hideModal();
+    currentRound++;
+   
+});
 
-
+newGameButton.addEventListener('click', function(){
+    hideModal();
+    currentRound = 1;
+    compSelect.textContent = "None";
+    roundResults.forEach(result => result.textContent = '');
+    humanScore = 0;
+    compScore = 0;
+    
+});
 
