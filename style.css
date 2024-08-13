@@ -19,7 +19,7 @@ h1 {
 .main-container {
     display: flex;
     margin-top: 80px;
-    flex-direction: row; /* Aligns game-setup and scoreboard horizontally */
+    flex-direction: row; 
     gap: 100px; /* Space between game setup and scoreboard */
     align-items: flex-start;
 }
@@ -86,7 +86,7 @@ h1 {
     border-radius: 10px;
     font-size: 18px;
     text-align: center;
-    width: 300px; /* Adjust as needed */
+    width: 300px; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -102,7 +102,7 @@ h1 {
     color: whitesmoke;
     padding: 20px;
     border-radius: 10px;
-    width: 300px; /* Adjust as needed */
+    width: 300px; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
