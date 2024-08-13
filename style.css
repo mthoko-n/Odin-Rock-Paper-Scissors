@@ -18,31 +18,31 @@ h1 {
 /* Main container for layout */
 .main-container {
     display: flex;
-    margin-top: 80px;
-    flex-direction: row; 
-    gap: 100px; /* Space between game setup and scoreboard */
-    align-items: flex-start;
+    margin-top: 20px; /* Reduced margin for smaller screens */
+    flex-direction: column; /* Stack elements on smaller screens */
+    gap: 20px; /* Reduced gap for smaller screens */
+    align-items: center;
 }
 
 /* Game setup container */
 .game-setup {
     display: flex;
     flex-direction: column;
-    gap: 85px;
+    gap: 20px; /* Reduced gap for smaller screens */
 }
 
 /* Container for buttons */
 .button-container {
     display: flex;
-    gap: 20px;
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+    gap: 10px; /* Reduced gap for smaller screens */
 }
 
 /* Button styling */
 .game-button{
-    width: 140px;
-    height: 140px;
-    font-size: 16px;
-    font-weight: bold;
+    width: 100px; /* Reduced width for smaller screens */
+    height: 100px; /* Reduced height for smaller screens */
+    font-size: 14px; /* Reduced font size for smaller screens */
     border: 3px solid transparent;
     border-radius: 10px;
     color: white;
@@ -83,11 +83,12 @@ h1 {
 .panel {
     background-color: #333;
     color: white;
-    padding: 20px;
+    padding: 15px; /* Reduced padding for smaller screens */
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 16px; /* Reduced font size for smaller screens */
     text-align: center;
-    width: 300px; 
+    width: 80%; /* Reduced width for smaller screens */
+    max-width: 300px; /* Maximum width */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -101,15 +102,16 @@ h1 {
 .scoreboard {
     background-color:  #333;
     color: whitesmoke;
-    padding: 20px;
+    padding: 15px; /* Reduced padding for smaller screens */
     border-radius: 10px;
-    width: 300px; 
+    width: 80%; /* Reduced width for smaller screens */
+    max-width: 300px; /* Maximum width */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .scoreboard h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 18px; /* Reduced font size for smaller screens */
+    margin-bottom: 10px; /* Reduced margin for smaller screens */
     text-align: center;
     color: whitesmoke;
 }
@@ -121,8 +123,8 @@ h1 {
 }
 
 .round {
-    margin-bottom: 10px;
-    font-size: 16px;
+    margin-bottom: 5px; /* Reduced margin for smaller screens */
+    font-size: 14px; /* Reduced font size for smaller screens */
 }
 
 .result {
@@ -150,11 +152,12 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
+    padding: 15px; /* Reduced padding for smaller screens */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     z-index: 1001;
-    width: 300px;
+    width: 80%; /* Reduced width for smaller screens */
+    max-width: 300px; /* Maximum width */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -178,20 +181,20 @@ h1 {
 
 /* Modal title */
 .modal-title {
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 20px; /* Reduced font size for smaller screens */
+    margin-bottom: 10px; /* Reduced margin for smaller screens */
 }
 
 /* Modal message */
 .modal-message {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 16px; /* Reduced font size for smaller screens */
+    margin-bottom: 15px; /* Reduced margin for smaller screens */
 }
 
 /* Buttons in modal */
 .next-round-button, .new-game-button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 8px 15px; /* Reduced padding for smaller screens */
+    font-size: 14px; /* Reduced font size for smaller screens */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -212,12 +215,28 @@ h1 {
     display: none;
 }
 
-
 /* Creator tag */
 .creator p {
-    margin-top: 50px;
+    margin-top: 30px; /* Reduced margin for smaller screens */
     text-align: center;
     font-style: normal;
     color: #777;
     font-size: 12px;
+}
+
+/* Media Queries for Mobile Optimization */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Stack content vertically on mobile */
+        gap: 20px;
+    }
+
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically on mobile */
+    }
+
+    .panel, .scoreboard, .modal {
+        width: 90%; /* Adjust width for mobile */
+        max-width: none; /* Remove max-width on mobile */
+    }
 }
